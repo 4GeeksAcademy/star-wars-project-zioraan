@@ -5,10 +5,11 @@ import "../../styles/home.css";
 import { CharacterCard } from "../component/characterCard";
 import { PlanetCard } from "../component/planetCard";
 import { SpeciesCard } from "../component/speciesCard";
+import { useNavigate } from "react-router";
 
 export const Home = () => {
 	const {store} = useContext(Context);
-
+    const navigate = useNavigate();
 	
 
 	return (
@@ -20,13 +21,13 @@ export const Home = () => {
                 </div>
             </div>
 			<div className="m-5">
-                <h1>Characters</h1>
+                <h1>Species</h1>
                 <div className="scrollmenu d-flex">
                     <SpeciesCard />
                 </div>
             </div>
 			<div className="m-5">
-                <h1>Characters</h1>
+                <h1>Planets</h1>
                 <div className="scrollmenu d-flex">
                     <PlanetCard />
                 </div>

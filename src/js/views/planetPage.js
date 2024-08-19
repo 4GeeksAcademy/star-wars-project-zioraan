@@ -3,20 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
-export const CharacterPage = () => {
+export const PlanetPage = () => {
 	const { store, actions } = useContext(Context);
     const { id } = useParams();
-    const [character, setCharacter] = useState(null);
+    const [planet, setPlanet] = useState(null);
     
     useEffect(() => {
-        const fetchCharacter = async () => {
-            await actions.getPersonInfo(id);
-            setCharacter(store.characterInfo)
+        const fetchPlanet = async () => {
+            await actions.getPlanetInfo(id);
+            setPlanet(store.planetInfo)
         };
-        fetchCharacter();
+        fetchPlanet();
     }, [])
     
-    if (!character) {
+    if (!planet) {
         return <div>Loading...</div>;
     }
 
@@ -24,30 +24,30 @@ export const CharacterPage = () => {
         <div className="container m-5">
             <div className="row">
                 <div className="col-md-4">
-                    <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="img-fluid"/>
+                    <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} className="img-fluid"/>
                 </div>
                 <div className="col-md-8">
-                    <h1>{character.name}</h1>
+                    <h1>{planet.name}</h1>
                     <div className="row">
                         <div className="col-md-4">
-                            <strong>Birth Year:</strong>
-                            <p>{character.birth_year}</p>
+                            <strong>Diameter:</strong>
+                            <p>{planet.diameter}</p>
                         </div>
                         <div className="col-md-4">
-                            <strong>Gender:</strong>
-                            <p>{character.gender}</p>
+                            <strong>Gravity:</strong>
+                            <p>{planet.gravity}</p>
                         </div>
                         <div className="col-md-4">
-                            <strong>Height:</strong>
-                            <p>{character.height}</p>
+                            <strong>Population:</strong>
+                            <p>{planet.population}</p>
                         </div>
                         <div className="col-md-4">
-                            <strong>Skin Color:</strong>
-                            <p>{character.skin_color}</p>
+                            <strong>Terrain:</strong>
+                            <p>{planet.terrain}</p>
                         </div>
                         <div className="col-md-4">
-                            <strong>Eye Color:</strong>
-                            <p>{character.eye_color}</p>
+                            <strong>Climate:</strong>
+                            <p>{planet.climate}</p>
                         </div>
                     </div>
                 </div>

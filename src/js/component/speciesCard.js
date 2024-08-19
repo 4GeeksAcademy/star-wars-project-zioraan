@@ -14,6 +14,10 @@ export const SpeciesCard = () => {
         actions.getSpecies()
     }, [])
 
+    const handleFavoriteClick = (character) => {
+        actions.addFavorite('species', character.uid, character.name);
+    }
+
 	return (
         <div className="d-flex col-10 overflow-auto mt-5 mx-auto">
             {store.species?.map((character, index) => (
@@ -23,9 +27,9 @@ export const SpeciesCard = () => {
                     <h4>{character.name}</h4>
                 <div className="justify-content-between d-flex">
                     <Link 
-                    to={`/people/` + character.uid}
+                    to={`/species/` + character.uid}
                     className="mx-2">Learn More!</Link>
-                    <button className="mx-2"><i className="fa fa-heart text-danger" /></button>
+                    <button className="mx-2" onClick={(e) => handleFavoriteClick(character)}><i className="fa fa-heart text-danger" /></button>
                 </div>
                 </div>
             ))}
